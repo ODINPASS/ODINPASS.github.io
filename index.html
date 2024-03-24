@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+    <html>
+        
+        <head>
+            <title> ODIN PASS </title>
+            <link rel="stylesheet" href="style.css">
+        </head>
+
+        <body>
+            <div class="parent">
+                <div class="fixed" style="background-color: rgba(88, 0, 156, 1)">
+                    <div class="top">
+                        <button class="button">
+                            <p>
+                                Close
+                            </p>
+                        </button>                        
+                    </div>
+                    <div class="top">
+                        <div class="child">
+                            <img src="odinpasslogo.png" alt="odin pass logo"
+                        width="220"
+                        height="150">  
+                        </div>
+                        <div style="margin:150px", class="child">
+                        </div> 
+                        <div class="child">
+                            <img src="translink.PNG" alt="translink logo"
+                            width="400px"
+                            height="100px">
+                        </div>                        
+                    </div>
+                </div>    
+                <div class="main">
+                    <div class="border">
+                        <div>
+                            <h2  style="font-size: 40px; margin-top: 100px; margin-bottom: 10px;">
+                                Current time
+                            </h2>
+                        </div>
+                        <div>
+                            <h1 id="time-current" style="font-size: 74px;  margin: 0px;">
+                                Current time
+                            </h1>
+                        </div>
+                        <div>
+                            <h1 id="date" style="font-size: 40px; margin-top: 15px; margin-bottom: 72px;">
+                                Current date
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="border" style="display: flex; flex-direction: row;">
+                        <div class="idone">
+                            <img src="myface.jpg" alt="avatar" width="260px" height="260px" style="border-radius: 50%; margin-top: 71px; margin-bottom: 66px;">   
+                        </div>
+                        <div class="idtwo" style="display: flex; flex-direction: column;">
+                            <div class="idsub">
+                                <h1 style="font-weight: 700; font-size: 52px; margin-top: 84px; margin-bottom: 21px;">
+                                    Artemiy Mikhaylov
+                                </h1>
+                            </div>
+                            <div class="idsubone">
+                                <h2 style="color: rgb(138, 138, 138); font-size: 40px; margin-top: 0px; margin-bottom: 20px;">
+                                    The University of Queensland
+                                </h2>
+                            </div>
+                            <div class="idsubtwo">
+                                <button style="border-radius: 50px; height: 104px; width: 332px; border:none; background-color: rgb(138, 138, 138);">
+                                    <h2 style="font-size: 38px; color: white;">
+                                        STUDENT
+                                    </h2>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="template border">
+                        <div style="width: 1080px; height: 200px; display: flex; flex-direction: row; padding-bottom: 20px;">
+                            <div style="flex: 1 1 0; padding-top: 87px;">
+                                <img src="Bus.jpg" alt="mode of transport" id="transport_img">
+                            </div>
+                            <div style="flex: 4 1 0;">
+                                <h1 style="text-align: left; font-size: 57px; font-weight: lighter; padding-top: 70px;" id="mode_transport">
+                                    Bus
+                                </h1>
+                            </div>
+                        </div>
+                        <div style="height: 333px; width: 1080px; display: flex; flex-direction: row;">
+                            <div style="flex: 1 1 0;">
+                                <img src="Dot.jpg" alt="transport marker">
+                            </div>
+                            <div style="flex: 4 1 0;">
+                                <div style="height: 50%;">
+                                    <h2 style="color: rgb(138, 138, 138); text-align: left; font-size: 40px; margin: 0px;">
+                                        From:
+                                    </h2>
+                                    <h2 style="color: black; text-align: left; font-size: 40px; margin: 0px;">
+                                        Oxley Ave at Jamieson Street
+                                    </h2>
+                                </div>
+                                <div style="height: 50%;">
+                                    <h2 style="color: rgb(138, 138, 138); text-align: left; font-size: 40px; margin: 0px;">
+                                        To:
+                                    </h2>
+                                    <h2 style="color: black; text-align: left; font-size: 40px; margin: 0px;">
+                                        Kippa-Ring station Stop A
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="singleuseconcession.PNG" alt="card" width="1000px" height="666px" style="padding-top: 45px;">  
+                    </div>
+                </div>    
+            </div>
+            <script>
+                "IMAGE CHANGER"
+                const img = document.getElementById('transport_img')
+                const writing = document.getElementById('mode_transport')
+                let toggle = 0;
+                img.addEventListener('click', function(){                
+                    if(toggle == 0){
+                        img.src = 'Train.jpg';
+                        writing.textContent = 'Train';
+                        toggle = 1;
+                    }
+                    else if(toggle == 1){
+                        img.src = 'Ferry.jpg'
+                        writing.textContent = 'Ferry';
+                        toggle = 2;
+                    }
+                    else{
+                        img.src = 'Bus.jpg'
+                        writing.textContent = 'Bus';
+                        toggle = 0;
+                    }
+                })
+
+                "DATE AND TIME"
+                let time = document.getElementById("time-current");
+                let currentDate = document.getElementById("date");
+
+                today = new Date();
+
+                dd = today.getDate();
+
+                let dayName = today.toLocaleDateString("en-US", {weekday: 'long'})
+                mm = today.getMonth();
+
+                const monthNames = ["January", "February", "March", 
+                "April", "May", "June", "July", "August", "September", 
+                "October", "November", "December"];
+
+                mm = monthNames[mm];
+                yyyy = today.getFullYear();
+                
+                const dateString = dayName + ", " + dd + " " + mm + " " + yyyy;
+
+                currentDate.innerHTML = dateString;
+
+                setInterval(() => {
+                let d = new Date();
+                hours = d.getHours().toString().padStart(2, '0');
+                minutes = d.getMinutes().toString().padStart(2, '0');
+                seconds = d.getSeconds().toString().padStart(2, '0');
+                time.innerHTML = `${hours}:${minutes}:${seconds}`;
+                }, 1000)
+            </script>
+        <body>
+    </html>
